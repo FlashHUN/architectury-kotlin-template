@@ -60,6 +60,9 @@ tasks.processResources {
             "version" to project.version,
 
             "mod_id" to rootProject.property("mod_id"),
+            "mod_name" to rootProject.property("mod_name"),
+            "description" to rootProject.property("description"),
+            "license" to rootProject.property("license"),
             "minecraft_version" to rootProject.property("minecraft_version"),
             "architectury_version" to rootProject.property("architectury_version"),
             "fabric_kotlin_version" to rootProject.property("fabric_kotlin_version")

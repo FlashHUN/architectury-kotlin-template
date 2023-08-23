@@ -14,8 +14,8 @@ loom {
         convertAccessWideners.set(true)
         extraAccessWideners.add(loom.accessWidenerPath.get().asFile.name)
 
-        mixinConfig("examplemod-common.mixins.json")
-        mixinConfig("examplemod.mixins.json")
+        mixinConfig("${rootProject.property("mod_id")}-common.mixins.json")
+        mixinConfig("${rootProject.property("mod_id")}.mixins.json")
     }
 }
 
@@ -59,9 +59,14 @@ tasks.processResources {
             "version" to project.version,
 
             "mod_id" to rootProject.property("mod_id"),
+            "mod_name" to rootProject.property("mod_name"),
+            "license" to rootProject.property("license"),
+            "description" to rootProject.property("description"),
             "minecraft_version" to rootProject.property("minecraft_version"),
             "architectury_version" to rootProject.property("architectury_version"),
-            "kotlin_for_forge_version" to rootProject.property("kotlin_for_forge_version")
+            "kotlin_for_forge_version" to rootProject.property("kotlin_for_forge_version"),
+            "kotlin_for_forge_minversion" to rootProject.property("kotlin_for_forge_minversion"),
+            "forge_minversion" to rootProject.property("forge_minversion")
         ))
     }
 }

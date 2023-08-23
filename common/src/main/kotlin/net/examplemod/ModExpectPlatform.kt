@@ -3,7 +3,7 @@ package net.examplemod
 import dev.architectury.injectables.annotations.ExpectPlatform
 import java.nio.file.Path
 
-object ExampleExpectPlatform {
+object ModExpectPlatform {
     /**
      * We can use [Platform.getConfigFolder] but this is just an example of [ExpectPlatform].
      *
@@ -13,9 +13,9 @@ object ExampleExpectPlatform {
      *
      *
      * Example:
-     * Expect: net.examplemod.ExampleExpectPlatform#getConfigDirectory()
-     * Actual Fabric: net.examplemod.fabric.ExampleExpectPlatformImpl#getConfigDirectory()
-     * Actual Forge: net.examplemod.forge.ExampleExpectPlatformImpl#getConfigDirectory()
+     * Expect: net.examplemod.ModExpectPlatform#getConfigDirectory()
+     * Actual Fabric: net.examplemod.fabric.ModExpectPlatformImpl#getConfigDirectory()
+     * Actual Forge: net.examplemod.forge.ModExpectPlatformImpl#getConfigDirectory()
      *
      *
      * [You should also get the IntelliJ plugin to help with @ExpectPlatform.](https://plugins.jetbrains.com/plugin/16210-architectury)

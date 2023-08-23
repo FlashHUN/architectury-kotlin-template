@@ -1,22 +1,22 @@
 modLoader = "kotlinforforge"
-loaderVersion = "[4,)"
+loaderVersion = "[${kotlin_for_forge_minversion},)"
 #issueTrackerURL = ""
-license = "Insert License Here"
+license = "${license}"
 
 [[mods]]
 modId = "${mod_id}"
 version = "${version}"
-displayName = "Example Mod"
-authors = "Me!"
+displayName = "${mod_name}"
+authors = "FlashHUN"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+${description}
 '''
 #logoFile = ""
 
 [[dependencies.${mod_id}]]
 modId = "forge"
 mandatory = true
-versionRange = "[43,)"
+versionRange = "[${forge_minversion},)"
 ordering = "NONE"
 side = "BOTH"
 
