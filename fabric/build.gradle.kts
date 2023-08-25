@@ -6,6 +6,9 @@ repositories {
     maven {
         url = uri("https://maven.quiltmc.org/repository/release/")
     }
+    maven{
+        url = uri("https://oss.sonatype.org/content/repositories/snapshots")
+    }
 }
 
 architectury {
@@ -30,6 +33,7 @@ configurations {
 dependencies {
     modImplementation("net.fabricmc:fabric-loader:${rootProject.property("fabric_loader_version")}")
     modApi("net.fabricmc.fabric-api:fabric-api:${rootProject.property("fabric_api_version")}")
+    modImplementation("me.lucko:fabric-permissions-api:${rootProject.property("fabric_permission_api_version")}")
     // Remove the next line if you don't want to depend on the API
     modApi("dev.architectury:architectury-fabric:${rootProject.property("architectury_version")}")
 
@@ -37,12 +41,6 @@ dependencies {
         isTransitive = false
     }
     shadowCommon(project(":common", "transformProductionFabric")){
-        isTransitive = false
-    }
-    common(project(":fabric-like", "namedElements")){
-        isTransitive = false
-    }
-    shadowCommon(project(":fabric-like", "transformProductionFabric")) {
         isTransitive = false
     }
 
