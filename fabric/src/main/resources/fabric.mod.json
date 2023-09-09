@@ -20,6 +20,12 @@
         "adapter": "kotlin",
         "value": "${group}.fabric.FabricBootstrap"
       }
+    ],
+    "client": [
+      {
+        "adapter": "kotlin",
+        "value": "${group}.fabric.FabricImplementationClient"
+      }
     ]
   },
   "mixins": [

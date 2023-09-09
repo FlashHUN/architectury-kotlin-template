@@ -1,0 +1,33 @@
+/*
+ * Copyright (C) 2023 Cobblemon Contributors
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
+package flash.testmod.platform.events
+
+import net.minecraft.server.MinecraftServer
+
+/**
+ * Event fired each time the server ticks.
+ */
+interface ServerTickEvent {
+
+    /**
+     * The [MinecraftServer] instance.
+     */
+    val server: MinecraftServer
+
+    /**
+     * Fired during the Pre tick phase.
+     */
+    data class Pre(override val server: MinecraftServer) : ServerTickEvent
+
+    /**
+     * Fired during the Post tick phase.
+     */
+    data class Post(override val server: MinecraftServer) : ServerTickEvent
+
+}

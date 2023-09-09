@@ -2,6 +2,7 @@ package flash.testmod
 
 import flash.testmod.ModMain.LOGGER
 import flash.testmod.ModMain.MOD_ID
+import flash.testmod.client.gui.overlay.Overlay
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.client.model.PlayerModel
 import net.minecraft.client.renderer.entity.EntityRenderer
@@ -11,6 +12,8 @@ import net.minecraft.world.entity.player.Player
 
 object ModClient {
     lateinit var implementation: PlatformImplementationClient
+
+    val overlay: Overlay by lazy { Overlay }
 
     fun init(implementation: PlatformImplementationClient) {
         LOGGER.info("Initializing $MOD_ID client")
@@ -42,7 +45,7 @@ object ModClient {
     }
 
     fun renderOverlay(graphics: GuiGraphics, partialTicks: Float) {
-        // overlay.render(graphics, partialTicks)
+        overlay.render(graphics, partialTicks)
     }
 
     @Suppress("UNCHECKED_CAST")

@@ -15,21 +15,52 @@ import net.minecraft.world.level.Level
  */
 interface NetworkPacket<T: NetworkPacket<T>> : Encodable {
 
+    /**
+     *
+     */
     val id: ResourceLocation
 
+    /**
+     * TODO
+     *
+     * @param player
+     */
     fun sendToPlayer(player: ServerPlayer) = ModPackets.sendPacketToPlayer(player, this)
 
+    /**
+     * TODO
+     *
+     * @param players
+     */
     fun sendToPlayers(players: Iterable<ServerPlayer>) {
         if (players.any()) {
             ModPackets.sendPacketToPlayers(players, this)
         }
     }
 
+    /**
+     * TODO
+     *
+     */
     fun sendToAllPlayers() = ModPackets.sendToAllPlayers(this)
 
+    /**
+     * TODO
+     *
+     */
     fun sendToServer() = ModPackets.sendPacketToServer(this)
 
     // A copy from PlayerManager#sendToAround to work with our packets
+    /**
+     * TODO
+     *
+     * @param x
+     * @param y
+     * @param z
+     * @param distance
+     * @param worldKey
+     * @param exclusionCondition
+     */
     fun sendToPlayersAround(x: Double, y: Double, z: Double, distance: Double, worldKey: ResourceKey<Level>, exclusionCondition: (ServerPlayer) -> Boolean = { false }) {
         val server = server() ?: return
         server.playerList.players.filter { player ->
@@ -43,6 +74,11 @@ interface NetworkPacket<T: NetworkPacket<T>> : Encodable {
             .forEach { player -> ModPackets.sendPacketToPlayer(player, this) }
     }
 
+    /**
+     * TODO
+     *
+     * @return
+     */
     fun toBuffer(): FriendlyByteBuf {
         val buffer = FriendlyByteBuf(Unpooled.buffer())
         this.encode(buffer)

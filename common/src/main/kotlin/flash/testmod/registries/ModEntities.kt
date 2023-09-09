@@ -1,6 +1,6 @@
 package flash.testmod.registries
 
-import flash.testmod.api.PlatformRegistry
+import flash.testmod.platform.PlatformRegistry
 import net.minecraft.core.Registry
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.core.registries.Registries

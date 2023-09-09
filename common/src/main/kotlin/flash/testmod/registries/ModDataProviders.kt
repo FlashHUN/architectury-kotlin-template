@@ -9,7 +9,6 @@ import net.minecraft.server.packs.resources.PreparableReloadListener
 object ModDataProviders {
 
     fun init() {
-
     }
 
     private fun registerData(key: String, reloader: PreparableReloadListener, dependencies: Collection<ResourceLocation> = emptyList()) {

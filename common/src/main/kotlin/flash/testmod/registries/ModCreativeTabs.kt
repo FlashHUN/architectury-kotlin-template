@@ -4,10 +4,8 @@ import flash.testmod.util.resource
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.CreativeModeTab
 import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters
-import net.minecraft.world.item.CreativeModeTabs
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 
@@ -18,7 +16,7 @@ object ModCreativeTabs {
 
     @JvmStatic val GENERIC_KEY = this.create("generic", this::genericEntries) { ItemStack(ModItems.TEST_ITEM) }
 
-    @JvmStatic val AGRICULTURE get() = BuiltInRegistries.CREATIVE_MODE_TAB.get(GENERIC_KEY)
+    @JvmStatic val GENERIC get() = BuiltInRegistries.CREATIVE_MODE_TAB.get(GENERIC_KEY)
 
 //    @JvmStatic val BUILDING_BLOCKS_INJECTIONS = this.inject(ResourceKey.create(BuiltInRegistries.CREATIVE_MODE_TAB.key(), CreativeModeTabs.BUILDING_BLOCKS.location()), this::buildingBlocksInjections)
 
@@ -47,7 +45,7 @@ object ModCreativeTabs {
 
     data class CreativeModeTabInjector(
         val key: ResourceKey<CreativeModeTab>,
-        val entryInjector: (displayContext: CreativeModeTab.ItemDisplayParameters) -> List<Item>,
+        val entryInjector: (displayContext: ItemDisplayParameters) -> List<Item>,
     )
 
     private fun create(name: String, entryCollector: CreativeModeTab.DisplayItemsGenerator, displayIconProvider: () -> ItemStack): ResourceKey<CreativeModeTab> {
@@ -56,7 +54,7 @@ object ModCreativeTabs {
         return key
     }
 
-    private fun inject(key: ResourceKey<CreativeModeTab>, entryInjector: (displayContext: CreativeModeTab.ItemDisplayParameters) -> List<Item>): CreativeModeTabInjector {
+    private fun inject(key: ResourceKey<CreativeModeTab>, entryInjector: (displayContext: ItemDisplayParameters) -> List<Item>): CreativeModeTabInjector {
         val injector = CreativeModeTabInjector(key, entryInjector)
         this.INJECTORS += injector
         return injector

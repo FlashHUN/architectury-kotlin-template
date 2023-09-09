@@ -1,4 +1,4 @@
-package flash.testmod.api
+package flash.testmod.platform
 
 import flash.testmod.util.resource
 import net.minecraft.core.Registry

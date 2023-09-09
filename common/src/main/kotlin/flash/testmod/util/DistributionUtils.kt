@@ -27,7 +27,7 @@ fun ifDedicatedServer(action: Runnable) {
     }
 }
 
-/**
+/*
  * Schedules the given block of code to run on the main thread and returns a [CompletableFuture] that completes with the result of the block when the code has executed.
  */
 fun <T> runOnServer(block: () -> T): CompletableFuture<T> {

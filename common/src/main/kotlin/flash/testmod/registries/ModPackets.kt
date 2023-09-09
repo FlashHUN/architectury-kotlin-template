@@ -5,6 +5,9 @@ import flash.testmod.NetworkManager
 import flash.testmod.api.net.ClientNetworkPacketHandler
 import flash.testmod.api.net.NetworkPacket
 import flash.testmod.api.net.ServerNetworkPacketHandler
+import flash.testmod.net.messages.clientbound.ClientboundSendAnimatedTexturePacket
+import flash.testmod.net.messages.clientbound.ClientboundSendTexturePacket
+import flash.testmod.net.messages.serverbound.ServerboundRequestTexturePacket
 import flash.testmod.util.server
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.network.protocol.Packet
@@ -21,11 +24,12 @@ object ModPackets : NetworkManager {
     fun sendPacketToPlayers(players: Iterable<ServerPlayer>, packet: NetworkPacket<*>) = players.forEach { sendPacketToPlayer(it, packet) }
 
     override fun registerClientBound() {
-//        this.createClientBound(ClientCustomPacket.ID, ClientCustomPacket::decode, ClientCustomPacketHandler)
+        this.createClientBound(ClientboundSendTexturePacket.ID, ClientboundSendTexturePacket::decode, ClientboundSendTexturePacket.Handler)
+        this.createClientBound(ClientboundSendAnimatedTexturePacket.ID, ClientboundSendAnimatedTexturePacket::decode, ClientboundSendAnimatedTexturePacket.Handler)
     }
 
     override fun registerServerBound() {
-//        this.createServerBound(CustomPacket.ID, CustomPacket::decode, CustomPacketHandler)
+        this.createServerBound(ServerboundRequestTexturePacket.ID, ServerboundRequestTexturePacket::decode, ServerboundRequestTexturePacket.Handler)
     }
 
     private inline fun <reified T : NetworkPacket<T>> createClientBound(resourceLocation: ResourceLocation, noinline decoder: (FriendlyByteBuf) -> T, handler: ClientNetworkPacketHandler<T>) {

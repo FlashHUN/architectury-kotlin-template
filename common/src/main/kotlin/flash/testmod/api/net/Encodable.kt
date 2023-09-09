@@ -10,8 +10,8 @@ interface Encodable {
     /**
      * Writes this instance to the given buffer.
      *
-     * @param buffer The [FriendlyByteBuf] being written to.
+     * @param buf The [FriendlyByteBuf] being written to.
      */
-    fun encode(buffer: FriendlyByteBuf)
+    fun encode(buf: FriendlyByteBuf)
 
 }

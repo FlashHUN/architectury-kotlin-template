@@ -1,5 +1,6 @@
 package flash.testmod.fabric
 
+import flash.testmod.ModMain
 import flash.testmod.NetworkManager
 import flash.testmod.api.net.ClientNetworkPacketHandler
 import flash.testmod.api.net.NetworkPacket

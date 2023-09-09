@@ -65,10 +65,10 @@ class ForgeImplementation : PlatformImplementation {
         DistExecutor.safeRunWhenOn(Dist.CLIENT) { DistExecutor.SafeRunnable(ForgeImplementationClient::init) }
     }
 
-    fun serverInit(event: FMLDedicatedServerSetupEvent) {
+    private fun serverInit(event: FMLDedicatedServerSetupEvent) {
     }
 
-    fun init(event: FMLCommonSetupEvent) {
+    private fun init(event: FMLCommonSetupEvent) {
         ModMain.LOGGER.info("Initializing...")
         this.networkManager.registerClientBound()
         this.networkManager.registerServerBound()
